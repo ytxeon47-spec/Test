@@ -1,4 +1,4 @@
-name: Windows Server 2022 noVNC Tailscale (Clean Standard)
+name: Windows 11 Enterprise noVNC (Dockur Repository Pull)
 
 on:
   workflow_dispatch:
@@ -38,7 +38,7 @@ jobs:
           
           echo "TAILSCALE_IP=$TS_IP" >> $GITHUB_ENV
 
-      - name: Run Windows Server 2022 Container
+      - name: Run Windows 11 Enterprise Container
         run: |
           USERNAME="MXDEV"
           PASSWORD="MXDEV123"
@@ -47,7 +47,7 @@ jobs:
           echo "RDP_PASS=$PASSWORD" >> $GITHUB_ENV
 
           docker run -d --name windows \
-            -e VERSION="2022" \
+            -e VERSION="11e" \
             -e USERNAME="$USERNAME" \
             -e PASSWORD="$PASSWORD" \
             -e AUTOLOGIN="N" \
@@ -69,7 +69,7 @@ jobs:
           echo " https://t.me/mxdevrdp"
           echo -e "=======================================================\n"
           
-          echo -e "\n=== WINDOWS SERVER 2022 CONNECT INFO ==="
+          echo -e "\n=== WINDOWS 11 ENTERPRISE CONNECT INFO ==="
           echo "Direct Web noVNC: http://$TAILSCALE_IP:8006"
           echo "RDP Address:      $TAILSCALE_IP:3389"
           echo "-------------------------------------------------------"
@@ -78,10 +78,10 @@ jobs:
           echo "Autologin:        DISABLED (Password Required)"
           echo "Resources:        16 GB RAM"
           echo "System Disk:      256GB (Single Drive)"
+          echo "Image Source:     dockur/windows Repository (Version 11e)"
           echo "=======================================================\n"
           
           while true; do
-              echo "[$(date)] Windows Server 2022 Active - MX DEV (https://t.me/mxdevrdp)"
+              echo "[$(date)] Windows 11 Enterprise Active - MX DEV (https://t.me/mxdevrdp)"
               sleep 300
           done
-
